@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-# --- Dato de prueba, no regla de negocio confirmada (ver docstring arriba) ---
+# --- Dato de prueba, no regla de negocio confirmada ---
 VERSION_VIGENTE = 3
 
 # --- Perfiles validos segun la ficha del reto ---
