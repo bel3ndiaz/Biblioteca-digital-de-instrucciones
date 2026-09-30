@@ -1,0 +1,183 @@
+:root{
+    --ink:#14264b;
+    --muted:#526785;
+    --blue:#1769ed;
+    --border:#d5e0f0;
+    --ok:#147443;
+    --info:#175ca4;
+    --warn:#875606;
+    --err:#ab2929}
+*{box-sizing:border-box}
+
+body{
+    margin:0;min-height:100vh;
+    padding:48px 20px;display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#e9f2ff,#f7faff 60%,#eef5ff);
+    color:var(--ink);
+    font-family:'Segoe UI',Arial,sans-serif;line-height:1.6}
+
+.panel{
+    width:100%;
+    max-width:590px;
+    padding:38px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:0 18px 60px #234a8210}
+
+.marca{display:flex;
+    align-items:center;
+    gap:13px;font-size:20px;
+    font-weight:750;
+    margin-bottom:26px}
+    
+.marca-icono{
+    display:grid;
+    place-items:center;
+    width:45px;
+    height:49px;
+    border-radius:12px;
+    background:#e9f2ff;
+    color:var(--blue);
+    font-size:30px}
+
+.kicker{
+    margin:0 0 6px;
+    font-size:12px;
+    font-weight:650;
+    color:var(--muted);
+    letter-spacing:.04em}h1{font-size:clamp(25px,5vw,32px);
+    line-height:1.2;
+    letter-spacing:-.6px;
+    margin:0 0 12px}.lede{font-size:15px;
+    color:var(--muted);
+    margin:0 0 23px}
+
+.notice{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    background:#eaf2ff;
+    color:#1556bd;
+    padding:10px 15px;
+    border-radius:12px;
+    font-size:14px;
+    margin-bottom:26px}
+
+.notice-dot{
+    width:7px;
+    height:7px;
+    background:var(--blue);
+    border-radius:50%;
+    margin-right:3px}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:19px}
+    
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px}
+    
+    label{
+        font-size:14px;
+        font-weight:650}
+        
+    input,select{
+        width:100%;
+        min-height:51px;
+        font:inherit;
+        font-size:16px;
+        color:var(--ink);
+        background:#fcfdff;
+        border:1px solid #bacbe2;
+        border-radius:10px;
+        padding:11px 14px}
+
+    input:focus,select:focus{
+        outline:3px solid #dceaff;
+        border-color:var(--blue)}
+
+    button{
+        min-height:53px;
+            border:0;
+            border-radius:11px;
+            background:var(--blue);
+            color:white;
+            font:inherit;
+            font-weight:700;
+            cursor:pointer;
+            box-shadow:0 5px 12px #1769ed20;
+            transition:background .15s,transform .15s}
+            
+        button:hover{
+            background:#1056ca}
+            
+        button:active{
+            transform:translateY(1px)}
+            
+        button:focus-visible{
+            outline:3px solid #81b1ff;
+            outline-offset:3px}
+            
+        button:disabled{
+            background:#617da6;
+            cursor:wait}
+
+.resultado{
+    margin-top:25px;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#f4f7fc}
+
+.resultado[hidden]{display:none}
+.badge{
+    display:block;
+    font-size:17px;
+    font-weight:750;
+    margin-bottom:6px}
+
+.explicacion{
+    margin:0;
+    font-size:15px;
+    color:var(--ink)}
+
+.crudo{
+    margin:12px 0 0;
+    padding-top:10px;
+    border-top:1px solid #14264b18;
+    font-size:12px;color:var(--muted);
+    overflow-wrap:anywhere}
+
+.crudo:empty{display:none}
+.resultado[data-tipo=ok]{
+    background:#eaf9f0;
+    border-color:#bfe7cf}
+    
+.resultado[data-tipo=ok] 
+.badge{color:var(--ok)}
+.resultado[data-tipo=info]{
+    background:#edf5ff;
+    border-color:#c6dcf5}
+    
+.resultado[data-tipo=info] 
+.badge{color:var(--info)}
+.resultado[data-tipo=warn]{
+    background:#fff7e7;
+    border-color:#efd5a4}
+.resultado[data-tipo=warn] 
+.badge{color:var(--warn)}
+.resultado[data-tipo=err]{
+    background:#fff0f0;
+    border-color:#f0c3c3}
+.resultado[data-tipo=err] 
+.badge{color:var(--err)}
+
+@media(max-width:480px){body{padding:22px 14px;align-items:flex-start}.panel{padding:25px 21px;border-radius:18px}.marca{font-size:18px;margin-bottom:22px}}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
