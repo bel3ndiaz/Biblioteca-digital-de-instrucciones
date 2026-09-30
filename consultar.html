@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta de instrucciones — Impresos Múltiples</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+
+  <main class="panel">
+    <div class="marca"><span class="marca-icono" aria-hidden="true">▤</span><span>Impresos Múltiples</span></div>
+    <p class="kicker">Biblioteca de instrucciones de trabajo</p>
+    <h1>Consulta de instrucciones</h1>
+    <p class="lede">
+      Escribe la versión que quieres revisar y el perfil con el que consultas.
+      El sistema te dice si esa versión está vigente, atrasada o si el dato no es válido.
+    </p>
+
+    <div class="notice">
+      <span class="notice-dot" aria-hidden="true"></span>
+      Versión vigente de prueba: <strong>{{ version_vigente }}</strong> 
+    </div>
+
+    <form id="consulta-form" novalidate>
+      <div class="field">
+        <label for="version">Versión a consultar</label>
+        <input
+          type="number"
+          id="version"
+          name="version"
+          placeholder="Ej: 3"
+          inputmode="numeric"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="perfil">Perfil</label>
+        <select id="perfil" name="perfil" required>
+          <option value="" disabled selected>Selecciona un perfil</option>
+          <option value="lectura">Solo lectura</option>
+          <option value="edicion">Edición</option>
+        </select>
+      </div>
+
+      <button type="submit">Consultar instrucción</button>
+    </form>
+
+    <section id="resultado" class="resultado" hidden aria-live="polite">
+      <span id="resultado-badge" class="badge"></span>
+      <p id="resultado-explicacion" class="explicacion"></p>
+      <p id="resultado-crudo" class="crudo"></p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
