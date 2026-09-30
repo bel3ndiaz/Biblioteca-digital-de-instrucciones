@@ -54,4 +54,44 @@ def consultar_instruccion():
             f"Version vigente de prueba: {VERSION_VIGENTE}."
         )
 
+    # 3) Perfil desconocido: nunca se habilita edicion por defecto,
+    #    aunque la version sea correcta.
+    elif perfil not in PERFILES_VALIDOS:
+        return (
+            f"Estado: ROL DESCONOCIDO. "
+            f"El perfil '{perfil}' no es valido. "
+            f"Perfiles permitidos: {', '.join(PERFILES_VALIDOS)}."
+        )
+
+    # 4) Version anterior a la vigente (aplica sin importar el perfil).
+    elif version < VERSION_VIGENTE:
+        return (
+            f"Estado: VERSION ANTERIOR. "
+            f"La version {version} esta desactualizada. "
+            f"La version vigente de prueba es {VERSION_VIGENTE}."
+        )
+
+    # 5) Version vigente consultada por un perfil de solo lectura.
+    elif version == VERSION_VIGENTE and perfil == "lectura":
+        return (
+            f"Estado: VERSION VIGENTE - CONSULTA (solo lectura). "
+            f"Version {version}."
+        )
+
+    # 6) Version vigente consultada por un perfil con edicion.
+    elif version == VERSION_VIGENTE and perfil == "edicion":
+        return (
+            f"Estado: VERSION VIGENTE - EDICION HABILITADA. "
+            f"Version {version}."
+        )
+
+    # 7) Caso de respaldo (no deberia alcanzarse si la logica anterior
+    #    esta completa, pero se deja por seguridad).
+    else:
+        return "Estado: CASO NO CONTEMPLADO. Revisar datos de entrada."
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5055)
+
 
